@@ -120,7 +120,14 @@ add_action( 'widgets_init', 'pixoff_resume_theme_widgets_init' );
  * Enqueue scripts and styles.
  */
 function pixoff_resume_theme_scripts() {
+	$content = file_get_contents(__DIR__ . "/dist/mix-manifest.json");
+	$files = json_decode($content, true);
+
 	wp_enqueue_style( 'pixoff-resume-theme-style', get_stylesheet_uri() );
+
+	wp_enqueue_style( 'pixoff-resume-theme-app-style', get_template_directory_uri() . '/dist' . $files['/app.css'] );
+
+	wp_enqueue_script( 'pixoff-resume-theme-app-script', get_template_directory_uri() . '/dist' . $files['/app.js'] );
 
 	wp_enqueue_script( 'pixoff-resume-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
