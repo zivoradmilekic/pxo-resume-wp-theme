@@ -1,1 +1,125 @@
 @import "~bootstrap/scss/bootstrap";
+
+.custom-logo {
+	max-height: 100px;
+	transition: all .4s;
+	will-change: max-height;
+
+	@include media-breakpoint-down(sm) {
+		max-height: 40px;
+	}
+}
+
+.site-header {
+	z-index: 9999;
+}
+
+.post-thumbnail {
+	margin-bottom: 1rem;
+
+	img {
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+	}
+}
+
+div#content.site-content {
+	min-height: 100vh;
+}
+
+.full-height {
+	min-height: 100vh
+}
+
+section {
+	$selector: &;
+
+	&.#{$selector}-hero {
+		overflow: hidden;
+		position: relative;
+		background-position: center;
+		background-size: cover;
+
+		@media screen {
+			background-attachment: fixed;
+		}
+
+		@media print {
+			background-position: left center;
+		}
+
+		.backdrop {
+			position: absolute;
+			background: rgba(0, 0, 0, 0.4);
+			width: 100vw;
+			height: 100vh;
+		}
+
+		.hero-graphic {
+			position: absolute;
+			max-width: 70%;
+			top: -20px;
+			right: -20px;
+			z-index: 2;
+			animation: hovering 20s infinite;
+		}
+
+		hr {
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+			border: 0;
+			border-top: 1px solid rgba(white, 0.4);
+			z-index: 1;
+			position: relative;
+		}
+
+		.display-3,
+		.lead,
+		.btn {
+			z-index: 2;
+			position: relative;
+		}
+	}
+
+	&.#{$selector}-about {
+		background-color: #1985e9;
+
+		@media screen {
+			background-image: linear-gradient(315deg, #3725ff, #1985e9);
+		}
+		@media print {
+			min-height: 100vh
+		}
+	}
+}
+
+.site-footer {
+	@media print {
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+		background: transparent !important;
+	}
+}
+
+@keyframes hovering {
+	0% {
+		transform: translate(0, 0);
+	}
+	20% {
+		transform: translate(20px, 15px);
+	}
+	40% {
+		transform: translate(15px, 20px);
+	}
+	60% {
+		transform: translate(-20px, 15px);
+	}
+	80% {
+		transform: translate(0, -20px);
+	}
+	100% {
+		transform: translate(0, 0);
+	}
+}

@@ -140,6 +140,16 @@ function pixoff_resume_theme_scripts() {
 add_action( 'wp_enqueue_scripts', 'pixoff_resume_theme_scripts' );
 
 /**
+ * Implement the Piklist - Pixoff Resume.
+ */
+require get_template_directory() . '/piklist/pixoff-resume.php';
+
+/**
+ * Implement the WP Bootstrap Navwalker.
+ */
+require get_template_directory() . '/inc/wp-bootstrap-navwalker.php';
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
@@ -166,3 +176,4 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+// ini_set('error_reporting', 0);
