@@ -42,7 +42,8 @@
 				'supports' => array(
 					'title',
 					'editor',
-					'revisions'
+					'revisions',
+					'thumbnail'
 				),
 				'public' => true,
 				'rewrite' => array(
@@ -55,12 +56,13 @@
 			),
 			'experience' => array(
 				'labels' => piklist('post_type_labels', 'Experience'),
-				'menu_icon' => 'dashicons-archive',
-				'page_icon' => 'dashicons-archive',
+				'menu_icon' => 'dashicons-businessman',
+				'page_icon' => 'dashicons-businessman',
 				'supports' => array(
 					'title',
 					'editor',
-					'revisions'
+					'revisions',
+					'thumbnail'
 				),
 				'public' => true,
 				'rewrite' => array(
@@ -78,7 +80,8 @@
 				'supports' => array(
 					'title',
 					'editor',
-					'revisions'
+					'revisions',
+					'thumbnail'
 				),
 				'public' => true,
 				'rewrite' => array(
@@ -89,66 +92,63 @@
 					'author' => __('Author')
 				)
 			),
-			'portfolio' => array(
-				'labels' => piklist('post_type_labels', 'Portfolio'),
+			'project' => array(
+				'labels' => piklist('post_type_labels', 'Project'),
 				'menu_icon' => 'dashicons-portfolio',
 				'page_icon' => 'dashicons-portfolio',
 				'supports' => array(
 					'title',
 					'editor',
-					'revisions'
-				),
-				'public' => true,
-				'rewrite' => array(
-					'slug' => 'portfolios'
-				),
-				'capability_type' => 'post',
-				'edit_columns' => array(
-					'author' => __('Author')
-				)
-			),
-
-
-
-
-			'unit' => array(
-				'labels' => piklist('post_type_labels', 'Unit'),
-				'menu_icon' => 'dashicons-portfolio',
-				'page_icon' => 'dashicons-portfolio',
-				'supports' => array(
-					'title',
-					'revisions'
-				),
-				'public' => true,
-				'rewrite' => array(
-					'slug' => 'units'
-				),
-				'capability_type' => 'post',
-				'edit_columns' => array(
-					'author' => __('Author')
-				)
-			),
-			'update' => array(
-				'labels' => piklist('post_type_labels', 'Update'),
-				'menu_icon' => 'dashicons-update',
-				'page_icon' => 'dashicons-update',
-				//'show_in_menu' => 'edit.php?post_type=unit',
-				'supports' => array(
-					'title',
 					'revisions',
-					'editor'
+					'thumbnail'
 				),
 				'public' => true,
-				'has_archive' => true,
 				'rewrite' => array(
-					'slug' => 'updates'
+					'slug' => 'projects'
 				),
 				'capability_type' => 'post',
 				'edit_columns' => array(
-					//'unit' => __('Unit'),
 					'author' => __('Author')
 				)
-			)
+			),
+			'language' => array(
+				'labels' => piklist('post_type_labels', 'Language'),
+				'menu_icon' => 'dashicons-translation',
+				'page_icon' => 'dashicons-translation',
+				'supports' => array(
+					'title',
+					'editor',
+					'revisions',
+					'thumbnail'
+				),
+				'public' => true,
+				'rewrite' => array(
+					'slug' => 'languages'
+				),
+				'capability_type' => 'post',
+				'edit_columns' => array(
+					'author' => __('Author')
+				)
+			),
+			'contact' => array(
+				'labels' => piklist('post_type_labels', 'Contact'),
+				'menu_icon' => 'dashicons-phone',
+				'page_icon' => 'dashicons-phone',
+				'supports' => array(
+					'title',
+					'editor',
+					'revisions',
+					'thumbnail'
+				),
+				'public' => true,
+				'rewrite' => array(
+					'slug' => 'contacts'
+				),
+				'capability_type' => 'post',
+				'edit_columns' => array(
+					'author' => __('Author')
+				)
+			),
 		));
 
 		return $post_types;
@@ -159,16 +159,16 @@
 	function pixoff_resume_taxonomies($taxonomies) {
 
 		$taxonomies[] = array(
-			'post_type' => 'unit',
-			'name' => 'unit-project',
+			'post_type' => 'project',
+			'name' => 'project-category',
 			'configuration' => array(
-        		'hierarchical' => true,
-				'page_icon' => 'dashicons-products',
+				'hierarchical' => true,
+				'page_icon' => 'dashicons-portfolio',
 				'show_ui' => true,
 				'query_var' => true,
-				'labels' => piklist('taxonomy_labels', 'Project'),
+				'labels' => piklist('taxonomy_labels', 'Category'),
 				'rewrite' => array(
-					'slug' => 'projects'
+					'slug' => 'project-categories'
 				),
 				'show_admin_column' => true,
 				'comments' => true
@@ -176,16 +176,16 @@
 		);
 
 		$taxonomies[] = array(
-			'post_type' => 'unit',
-			'name' => 'unit-group',
+			'post_type' => 'skill',
+			'name' => 'skill-group',
 			'configuration' => array(
 				'hierarchical' => true,
-				'page_icon' => 'dashicons-products',
+				'page_icon' => 'dashicons-hammer',
 				'show_ui' => true,
 				'query_var' => true,
 				'labels' => piklist('taxonomy_labels', 'Group'),
 				'rewrite' => array(
-					'slug' => 'groups'
+					'slug' => 'skill-groups'
 				),
 				'show_admin_column' => true,
 				'comments' => true
@@ -194,13 +194,6 @@
 
 		return $taxonomies;
 	}
-
-	add_action('init', 'my_remove_post_type_support', 10);
-
-	function my_remove_post_type_support() {
-		remove_post_type_support('page', 'editor');
-	}
-
 
 	add_filter('piklist_admin_pages', 'pixoff_resume_admin_pages');
 

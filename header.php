@@ -20,19 +20,42 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> data-spy="scroll" data-target="#header-navbar" data-offset="0">
 <div id="page" class="site">
-	<header class="site-header bg-transparent position-absolute w-100"><!-- bg-primary -->
-		<nav class="navbar navbar-expand-sm navbar-dark container">
+	<header class="site-header bg-transparent position-absolute w-100">
+		<nav id="header-navbar" class="navbar navbar-expand-md navbar-dark container">
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<?php if (has_nav_menu('menu-1')): ?>
+				<ul class="navbar-nav nav-pills mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#hero">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#about">About me</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#experiences">Experiences</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#services">Services</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#skills">Skills</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#projects">Projects</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#contact">Contact me</a>
+					</li>
+				</ul>
+				<?php if (has_nav_menu('menu-1') && false): ?>
 					<?php wp_nav_menu(['theme_location' => 'menu-1',
 						'menu_id'           => 'primary-menu',
 						'menu_class'        => 'nav',
 						'depth'             => 2,
 						'container'         => '',
-						'menu_class'        => 'nav navbar-nav mr-auto',
+						'menu_class'        => 'nav navbar-nav mr-auto d-none',
 						'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
 						'walker'            => new WP_Bootstrap_Navwalker()])
 					?>

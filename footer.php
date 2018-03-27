@@ -13,11 +13,11 @@
 
 	</div><!-- #content -->
 
-	<footer class="site-footer bg-dark text-light text-center py-3">
+	<footer class="site-footer bg-primary text-light text-center py-3">
 		<div class="site-info">
 				<?php
 				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'pixoff-resume-theme' ), 'Pixoff Resume', '<a href="http://pixoff.co" target="_blank">Pixofff Team</a>' );
+				printf( esc_html__( 'Resume by %1$s.', 'pixoff-resume-theme' ), '<a class="text-light" href="http://pixoff.co" target="_blank">Pixofff</a>' );
 				?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->

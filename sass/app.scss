@@ -1,13 +1,34 @@
 @import "~bootstrap/scss/bootstrap";
+@import "./fill-emphasis";
+
+// Contextual colors
+
+.fill-white { fill: #fff !important; }
+
+@each $color, $value in $theme-colors {
+  @include fill-emphasis-variant(".fill-#{$color}", $value);
+}
+
+.fill-muted { fill: $text-muted !important; }
+
+.o-5 {
+	opacity: 0.5;
+}
 
 .custom-logo {
+	max-width: 100px;
 	max-height: 100px;
 	transition: all .4s;
 	will-change: max-height;
 
 	@include media-breakpoint-down(sm) {
+		max-width: 40px;
 		max-height: 40px;
 	}
+}
+
+.progress {
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 .site-header {
@@ -32,10 +53,26 @@ div#content.site-content {
 	min-height: 100vh
 }
 
-section {
-	$selector: &;
+.hr-light {
+	margin-top: 0;
+	margin-bottom: 0;
+	border: 0;
+	border-top: 1px solid rgba(white, 0.4);
+	z-index: 1;
+	position: relative;
+}
 
-	&.#{$selector}-hero {
+svg {
+	vertical-align: middle;
+}
+
+.fs-3 {
+	font-size: 3rem;
+}
+
+section {
+	&.section-hero,
+	&.section-404 {
 		overflow: hidden;
 		position: relative;
 		background-position: center;
@@ -58,20 +95,14 @@ section {
 
 		.hero-graphic {
 			position: absolute;
+			width: auto;
+			height: auto;
 			max-width: 70%;
+			max-height: 90%;
 			top: -20px;
 			right: -20px;
 			z-index: 2;
 			animation: hovering 20s infinite;
-		}
-
-		hr {
-			margin-top: 1rem;
-			margin-bottom: 1rem;
-			border: 0;
-			border-top: 1px solid rgba(white, 0.4);
-			z-index: 1;
-			position: relative;
 		}
 
 		.display-3,
@@ -79,17 +110,6 @@ section {
 		.btn {
 			z-index: 2;
 			position: relative;
-		}
-	}
-
-	&.#{$selector}-about {
-		background-color: #1985e9;
-
-		@media screen {
-			background-image: linear-gradient(315deg, #3725ff, #1985e9);
-		}
-		@media print {
-			min-height: 100vh
 		}
 	}
 }
@@ -121,5 +141,26 @@ section {
 	}
 	100% {
 		transform: translate(0, 0);
+	}
+}
+
+.pxo-item-post {
+	.pxo-item-post_icon {
+		> * {
+			width: 48px;
+			height: 48px;
+		}
+	}
+	.pxo-item-post_content {
+		a {
+			color: inherit;
+		}
+	}
+	.pxo-item-post_thumbnail {
+		img {
+			width: auto;
+			height: auto;
+			max-width: 100%;
+		}
 	}
 }

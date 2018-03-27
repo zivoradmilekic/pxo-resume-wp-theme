@@ -145,6 +145,11 @@ add_action( 'wp_enqueue_scripts', 'pixoff_resume_theme_scripts' );
 require get_template_directory() . '/piklist/pixoff-resume.php';
 
 /**
+ * Implement the WP Pixoff Functiion.
+ */
+require get_template_directory() . '/inc/pxo.php';
+
+/**
  * Implement the WP Bootstrap Navwalker.
  */
 require get_template_directory() . '/inc/wp-bootstrap-navwalker.php';
