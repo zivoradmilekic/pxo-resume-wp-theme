@@ -2,7 +2,7 @@
 	<div class="container full-height">
 		<div class="row full-height align-items-center py-5">
 			<div class="col-12">
-				<?php pixoff_resume_theme_post_thumbnail(); ?>
+				<?php pxo_post_thumbnail(); ?>
 				<h3 class="display-4">About me</h1>
 				<hr class="hr-light my-4">
 				<div class="entry-content">

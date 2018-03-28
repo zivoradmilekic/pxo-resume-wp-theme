@@ -7,7 +7,7 @@
  * @package Pixoff_Resume_Theme
  */
 
-if ( ! function_exists( 'pixoff_resume_theme_setup' ) ) :
+if ( ! function_exists( 'pxo_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -15,14 +15,14 @@ if ( ! function_exists( 'pixoff_resume_theme_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function pixoff_resume_theme_setup() {
+	function pxo_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 * If you're building a theme based on Pixoff Resume Theme, use a find and replace
-		 * to change 'pixoff-resume-theme' to the name of your theme in all the template files.
+		 * to change 'pxo' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'pixoff-resume-theme', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'pxo', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -44,7 +44,7 @@ if ( ! function_exists( 'pixoff_resume_theme_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'pixoff-resume-theme' ),
+			'menu-1' => esc_html__( 'Primary', 'pxo' ),
 		) );
 
 		/*
@@ -60,7 +60,7 @@ if ( ! function_exists( 'pixoff_resume_theme_setup' ) ) :
 		) );
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'pixoff_resume_theme_custom_background_args', array(
+		add_theme_support( 'custom-background', apply_filters( 'pxo_custom_background_args', array(
 			'default-color' => 'ffffff',
 			'default-image' => '',
 		) ) );
@@ -81,7 +81,7 @@ if ( ! function_exists( 'pixoff_resume_theme_setup' ) ) :
 		) );
 	}
 endif;
-add_action( 'after_setup_theme', 'pixoff_resume_theme_setup' );
+add_action( 'after_setup_theme', 'pxo_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -90,54 +90,54 @@ add_action( 'after_setup_theme', 'pixoff_resume_theme_setup' );
  *
  * @global int $content_width
  */
-function pixoff_resume_theme_content_width() {
+function pxo_content_width() {
 	// This variable is intended to be overruled from themes.
 	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters( 'pixoff_resume_theme_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'pxo_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'pixoff_resume_theme_content_width', 0 );
+add_action( 'after_setup_theme', 'pxo_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function pixoff_resume_theme_widgets_init() {
+function pxo_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'pixoff-resume-theme' ),
+		'name'          => esc_html__( 'Sidebar', 'pxo' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'pixoff-resume-theme' ),
+		'description'   => esc_html__( 'Add widgets here.', 'pxo' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
 }
-add_action( 'widgets_init', 'pixoff_resume_theme_widgets_init' );
+add_action( 'widgets_init', 'pxo_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function pixoff_resume_theme_scripts() {
+function pxo_scripts() {
 	$content = file_get_contents(__DIR__ . "/dist/mix-manifest.json");
 	$files = json_decode($content, true);
 
-	wp_enqueue_style( 'pixoff-resume-theme-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'pxo-style', get_stylesheet_uri() );
 
-	wp_enqueue_style( 'pixoff-resume-theme-app-style', get_template_directory_uri() . '/dist' . $files['/app.css'] );
+	wp_enqueue_style( 'pxo-app-style', get_template_directory_uri() . '/dist' . $files['/app.css'] );
 
-	wp_enqueue_script( 'pixoff-resume-theme-app-script', get_template_directory_uri() . '/dist' . $files['/app.js'] );
+	wp_enqueue_script( 'pxo-app-script', get_template_directory_uri() . '/dist' . $files['/app.js'] );
 
-	wp_enqueue_script( 'pixoff-resume-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'pxo-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'pixoff-resume-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'pxo-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'pixoff_resume_theme_scripts' );
+add_action( 'wp_enqueue_scripts', 'pxo_scripts' );
 
 /**
  * Implement the Piklist - Pixoff Resume.
@@ -181,4 +181,4 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-// ini_set('error_reporting', 0);
+ini_set('error_reporting', 0);

@@ -55,8 +55,8 @@ function the_date_range($id) {
 	$to = format_date(get_post_meta($id, 'to', true));
 
 	if ($from || $to) {
-		$from = ($from) ? $from : __('Past', 'pixoff-resume-theme');
-		$to = ($to) ? $to : __('Present', 'pixoff-resume-theme');
+		$from = ($from) ? $from : esc_html__('Past', 'pxo');
+		$to = ($to) ? $to : esc_html__('Present', 'pxo');
 		$date_range = $from . " - " . $to;
 ?>
 	<p class="my-1 o-5"><?= $date_range ?></p>

@@ -14,27 +14,27 @@
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses pixoff_resume_theme_header_style()
+ * @uses pxo_header_style()
  */
-function pixoff_resume_theme_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'pixoff_resume_theme_custom_header_args', array(
+function pxo_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'pxo_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'pixoff_resume_theme_header_style',
+		'wp-head-callback'       => 'pxo_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'pixoff_resume_theme_custom_header_setup' );
+add_action( 'after_setup_theme', 'pxo_custom_header_setup' );
 
-if ( ! function_exists( 'pixoff_resume_theme_header_style' ) ) :
+if ( ! function_exists( 'pxo_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
-	 * @see pixoff_resume_theme_custom_header_setup().
+	 * @see pxo_custom_header_setup().
 	 */
-	function pixoff_resume_theme_header_style() {
+	function pxo_header_style() {
 		$header_text_color = get_header_textcolor();
 
 		/*
