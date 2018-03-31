@@ -10,10 +10,41 @@
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function pxo_customize_register( $wp_customize ) {
+function pxo_customize_register( \WP_Customize_Manager $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+
+	$wp_customize->add_section( 'pxo_page_sections',
+		array(
+			'title'         => esc_html__( 'Page sections', 'pxo' ),
+			'priority'      => 30
+		)
+	);
+
+	$sections = array(
+		'about' => esc_html__( 'About section page', 'pxo' ),
+		'experiences' => esc_html__( 'Experiences section page', 'pxo' ),
+		'services' => esc_html__( 'Services section page', 'pxo' ),
+		'skills' => esc_html__( 'Skills section page', 'pxo' ),
+		'projects' => esc_html__( 'Projects section page', 'pxo' ),
+		'contact' => esc_html__( 'Contact section page', 'pxo' ),
+	);
+
+	foreach ($sections as $key => $section) {
+
+		$wp_customize->add_setting( 'pxo_' . $key . '_section_page', array(
+			'default'           => '',
+			'sanitize_callback' => 'absint'
+		) );
+
+		$wp_customize->add_control( 'pxo_' . $key . '_section_page', array(
+			'label'    => $section,
+			'section'  => 'pxo_page_sections',
+			'type'     => 'dropdown-pages'
+		) );
+
+	}
 
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial( 'blogname', array(
@@ -25,6 +56,7 @@ function pxo_customize_register( $wp_customize ) {
 			'render_callback' => 'pxo_customize_partial_blogdescription',
 		) );
 	}
+
 }
 add_action( 'customize_register', 'pxo_customize_register' );
 

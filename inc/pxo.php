@@ -64,4 +64,14 @@ function the_date_range($id) {
 	}
 }
 
+function has_the_content() {
+	global $post;
+	return $post->post_content != '';
+}
+
+function the_slug() {
+	global $post;
+	echo $post->post_name;
+};
+
 ?>
