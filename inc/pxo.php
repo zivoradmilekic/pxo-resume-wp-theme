@@ -74,32 +74,27 @@ function the_slug() {
 	echo $post->post_name;
 };
 
-function the_hero_section_style() {
+function the_hero_section_header_style() {
 	$horizontal_background_image_url = esc_url(get_theme_mod('pxo_hero_section_horizontal_background_image'));
-	$vertical_background_image_url = esc_url(get_theme_mod('pxo_hero_section_vertical_background_image'));
-
 	if ($horizontal_background_image_url) {
 ?>
 <style>
-	@media (orientation: landscape) {
+	@media screen and (orientation: landscape) {
 		section.section-hero {
-			background-image: url(<?= $horizontal_background_image_url; ?>);
+			background-image: url(<?= $horizontal_background_image_url; ?>) !important;
 		}
 	}
 </style>
 <?php
 	}
 
-	if ($vertical_background_image_url) {
-?>
-<style>
-	@media (orientation: portrait) {
-		section.section-hero {
-			background-image: url(<?= $vertical_background_image_url; ?>);
-		}
-	}
-</style>
-<?php
+}
+
+function the_hero_section_style() {
+	$hero_background_image_url = esc_url(get_theme_mod('pxo_hero_section_hero_background_image'));
+
+	if ($hero_background_image_url) {
+		echo 'style="background-image: url(' . $hero_background_image_url . ');"';
 	}
 
 }

@@ -18,7 +18,6 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
 
-	<?php the_hero_section_style(); ?>
 	<?php the_primary_color_style(); ?>
 </head>
 

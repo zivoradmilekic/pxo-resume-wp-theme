@@ -1,4 +1,4 @@
-<section id="<?php the_slug(); ?>" label="<?php the_title(); ?>" class="section-hero text-light full-height">
+<section id="<?php the_slug(); ?>" label="<?php the_title(); ?>" class="section-hero text-light full-height" <?php the_hero_section_style(); ?>>
 	<div class="backdrop"></div>
 	<?php the_hero_graphic_image(); ?>
 	<div class="container full-height">

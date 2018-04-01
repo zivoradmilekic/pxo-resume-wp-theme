@@ -1,4 +1,4 @@
-<section id="<?php the_slug(); ?>" label="<?php the_title(); ?>" class="section-projects bg-primary full-height text-light fill-light">
+<section id="<?php the_slug(); ?>" label="<?php the_title(); ?>" class="section-projects bg-secondary full-height text-light fill-light">
 	<div class="container full-height">
 		<div class="row full-height align-items-center py-5">
 			<div class="col-12">

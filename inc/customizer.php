@@ -47,23 +47,13 @@ function pxo_customize_register( WP_Customize_Manager $wp_customize ) {
 		)
 	);
 
-	$wp_customize->add_setting( 'pxo_hero_section_horizontal_background_image', array(
+	$wp_customize->add_setting( 'pxo_hero_section_hero_background_image', array(
 		'default'           => ''
 	) );
-	$wp_customize->add_control(new \WP_Customize_Image_Control($wp_customize, 'pxo_hero_section_horizontal_background_image', [
-		'label' => __('Horizontal background image', 'pxo'),
+	$wp_customize->add_control(new \WP_Customize_Image_Control($wp_customize, 'pxo_hero_section_hero_background_image', [
+		'label' => __('Hero background image', 'pxo'),
 		'section' => 'pxo_hero_section',
-		'settings' => 'pxo_hero_section_horizontal_background_image',
-		'transport' => 'postMessage'
-	]));
-
-	$wp_customize->add_setting( 'pxo_hero_section_vertical_background_image', array(
-		'default'           => ''
-	) );
-	$wp_customize->add_control(new \WP_Customize_Image_Control($wp_customize, 'pxo_hero_section_vertical_background_image', [
-		'label' => __('Vertical background image', 'pxo'),
-		'section' => 'pxo_hero_section',
-		'settings' => 'pxo_hero_section_vertical_background_image',
+		'settings' => 'pxo_hero_section_hero_background_image',
 		'transport' => 'postMessage'
 	]));
 
