@@ -59,15 +59,6 @@ if ( ! function_exists( 'pxo_setup' ) ) :
 			'caption',
 		) );
 
-		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'pxo_custom_background_args', array(
-			'default-color' => 'ffffff',
-			'default-image' => '',
-		) ) );
-
-		// Add theme support for selective refresh for widgets.
-		add_theme_support( 'customize-selective-refresh-widgets' );
-
 		/**
 		 * Add support for core custom logo.
 		 *
@@ -143,6 +134,11 @@ add_action( 'wp_enqueue_scripts', 'pxo_scripts' );
  * Implement the Piklist - Pixoff Resume.
  */
 require get_template_directory() . '/piklist/pixoff-resume.php';
+
+/**
+ * Implement the Color functions.
+ */
+require get_template_directory() . '/inc/color-functions.php';
 
 /**
  * Implement the WP Pixoff Functiion.

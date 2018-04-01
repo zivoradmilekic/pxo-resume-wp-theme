@@ -1,6 +1,6 @@
-<section id="<?php the_slug(); ?>" label="<?php the_title(); ?>" class="section-hero text-light full-height" style="background-image: url(http://zivorad.test/wp-content/uploads/2018/03/coming-soon-background.jpg)">
+<section id="<?php the_slug(); ?>" label="<?php the_title(); ?>" class="section-hero text-light full-height">
 	<div class="backdrop"></div>
-	<img class="hero-graphic" src="http://zivorad.test/wp-content/uploads/2018/03/hero-graphic.svg" alt="Hero graphic">
+	<?php the_hero_graphic_image(); ?>
 	<div class="container full-height">
 		<div class="row full-height align-items-center">
 			<div class="col-12 py-5">

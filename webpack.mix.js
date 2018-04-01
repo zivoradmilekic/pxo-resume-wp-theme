@@ -7,7 +7,7 @@ mix.sass('sass/app.scss', './');
 mix.disableNotifications();
 mix.browserSync({
 	proxy: 'http://zivorad.test',
-	files: ["./sass/", "./js/", "./template-parts/", "./piklist/", "./*.php"]
+	files: ["./sass/", "./js/", "./inc/", "./template-parts/", "./piklist/", "./*.php"]
 });
 
 if (mix.inProduction()) {

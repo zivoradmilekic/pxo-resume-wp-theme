@@ -74,4 +74,122 @@ function the_slug() {
 	echo $post->post_name;
 };
 
+function the_hero_section_style() {
+	$horizontal_background_image_url = esc_url(get_theme_mod('pxo_hero_section_horizontal_background_image'));
+	$vertical_background_image_url = esc_url(get_theme_mod('pxo_hero_section_vertical_background_image'));
+
+	if ($horizontal_background_image_url) {
+?>
+<style>
+	@media (orientation: landscape) {
+		section.section-hero {
+			background: url(<?= $horizontal_background_image_url; ?>);
+		}
+	}
+</style>
+<?php
+	}
+
+	if ($vertical_background_image_url) {
+?>
+<style>
+	@media (orientation: portrait) {
+		section.section-hero {
+			background: url(<?= $vertical_background_image_url; ?>);
+		}
+	}
+</style>
+<?php
+	}
+
+}
+
+function the_primary_color_style() {
+	$primary_color = get_theme_mod('pxo_theming_section_primary_color');
+
+	if ($primary_color) {
+?>
+<style>
+	.bg-primary {
+		background-color: <?= $primary_color; ?> !important;
+	}
+
+	.fill-primary path {
+		fill: <?= $primary_color; ?> !important;
+	}
+
+
+	.btn-primary {
+		color: #fff;
+		background-color: <?= $primary_color; ?>;
+		border-color: <?= $primary_color; ?>;
+	}
+
+	.btn-primary:hover {
+		color: #fff;
+		background-color: <?= sass_darken($primary_color, 7.5); ?>;
+		border-color: <?= sass_darken($primary_color, 10); ?>;
+	}
+
+	.btn-primary:focus,
+	.btn-primary.focus {
+		-webkit-box-shadow: 0 0 0 0.2rem <?= get_rgba($primary_color, 50); ?>;
+				box-shadow: 0 0 0 0.2rem <?= get_rgba($primary_color, 50); ?>;
+	}
+
+	.btn-primary.disabled,
+	.btn-primary:disabled {
+		color: #fff;
+		background-color: <?= $primary_color; ?>;
+		border-color: <?= $primary_color; ?>;
+	}
+
+	.btn-primary:not(:disabled):not(.disabled):active,
+	.btn-primary:not(:disabled):not(.disabled).active,
+	.show > .btn-primary.dropdown-toggle {
+		color: #fff;
+		background-color: <?= sass_darken($primary_color, 10); ?>;
+		border-color: <?= sass_darken($primary_color, 12.5); ?>;
+	}
+
+	.btn-primary:not(:disabled):not(.disabled):active:focus,
+	.btn-primary:not(:disabled):not(.disabled).active:focus,
+	.show > .btn-primary.dropdown-toggle:focus {
+		-webkit-box-shadow: 0 0 0 0.2rem <?= get_rgba($primary_color, 50); ?>;
+				box-shadow: 0 0 0 0.2rem <?= get_rgba($primary_color, 50); ?>;
+	}
+
+
+	.form-control:focus {
+		color: #495057;
+		background-color: #fff;
+		border-color: <?= sass_lighten($primary_color, 25); ?>;
+		outline: 0;
+		-webkit-box-shadow: 0 0 0 0.2rem <?= get_rgba($primary_color, 25); ?>;
+		box-shadow: 0 0 0 0.2rem <?= get_rgba($primary_color, 25); ?>;
+	}
+
+
+	.nav-pills .nav-link.active,
+	.nav-pills .show > .nav-link {
+		color: #fff;
+		background-color: <?= $primary_color; ?>;
+	}
+
+</style>
+<?php
+	}
+
+}
+
+function the_hero_graphic_image() {
+	$hero_graphic_url = esc_url(get_theme_mod('pxo_hero_section_hero_graphic'));
+
+	if ($hero_graphic_url) {
+?>
+<img class="hero-graphic" src="<?= $hero_graphic_url; ?>" alt="Hero graphic">
+<?php
+	}
+}
+
 ?>

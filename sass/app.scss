@@ -78,12 +78,10 @@ section {
 		background-position: center;
 		background-size: cover;
 
-		@media screen {
-			background-attachment: fixed;
-		}
-
-		@media print {
-			background-position: left center;
+		@include media-breakpoint-up(lg) {
+			@media screen {
+				background-attachment: fixed;
+			}
 		}
 
 		.backdrop {

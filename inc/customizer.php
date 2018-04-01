@@ -10,18 +10,81 @@
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function pxo_customize_register( \WP_Customize_Manager $wp_customize ) {
+function pxo_customize_register( WP_Customize_Manager $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
-	$wp_customize->add_section( 'pxo_page_sections',
+	// Remove customizer sections
+	$wp_customize->remove_section('colors');
+	$wp_customize->remove_section('header_image');
+
+
+	// Add customizer hero section
+	$wp_customize->add_section( 'pxo_theming_section',
 		array(
-			'title'         => esc_html__( 'Page sections', 'pxo' ),
+			'title'         => esc_html__( 'Theming', 'pxo' ),
+			'priority'      => 20
+		)
+	);
+
+	$wp_customize->add_setting( 'pxo_theming_section_primary_color', array(
+		'default'           => ''
+	) );
+	$wp_customize->add_control(new \WP_Customize_Color_Control($wp_customize, 'pxo_theming_section_primary_color', [
+		'label' => __('Primary color', 'pxo'),
+		'description' => __('This is primary color.', 'pxo'),
+		'section' => 'pxo_theming_section',
+		'settings' => 'pxo_theming_section_primary_color',
+		'transport' => 'postMessage'
+	]));
+
+
+	// Add customizer hero section
+	$wp_customize->add_section( 'pxo_hero_section',
+		array(
+			'title'         => esc_html__( 'Hero section', 'pxo' ),
 			'priority'      => 30
 		)
 	);
 
+	$wp_customize->add_setting( 'pxo_hero_section_horizontal_background_image', array(
+		'default'           => ''
+	) );
+	$wp_customize->add_control(new \WP_Customize_Image_Control($wp_customize, 'pxo_hero_section_horizontal_background_image', [
+		'label' => __('Horizontal background image', 'pxo'),
+		'section' => 'pxo_hero_section',
+		'settings' => 'pxo_hero_section_horizontal_background_image',
+		'transport' => 'postMessage'
+	]));
+
+	$wp_customize->add_setting( 'pxo_hero_section_vertical_background_image', array(
+		'default'           => ''
+	) );
+	$wp_customize->add_control(new \WP_Customize_Image_Control($wp_customize, 'pxo_hero_section_vertical_background_image', [
+		'label' => __('Vertical background image', 'pxo'),
+		'section' => 'pxo_hero_section',
+		'settings' => 'pxo_hero_section_vertical_background_image',
+		'transport' => 'postMessage'
+	]));
+
+	$wp_customize->add_setting( 'pxo_hero_section_hero_graphic', array(
+		'default'           => ''
+	) );
+	$wp_customize->add_control(new \WP_Customize_Image_Control($wp_customize, 'pxo_hero_section_hero_graphic', [
+		'label' => __('Hero graphic', 'pxo'),
+		'section' => 'pxo_hero_section',
+		'settings' => 'pxo_hero_section_hero_graphic',
+		'transport' => 'postMessage'
+	]));
+
+
+	// Add customizer page section
+	$wp_customize->add_section( 'pxo_page_sections',
+		array(
+			'title'         => esc_html__( 'Page sections', 'pxo' ),
+			'priority'      => 40
+		)
+	);
 	$sections = array(
 		'about' => esc_html__( 'About section page', 'pxo' ),
 		'experiences' => esc_html__( 'Experiences section page', 'pxo' ),
@@ -30,12 +93,9 @@ function pxo_customize_register( \WP_Customize_Manager $wp_customize ) {
 		'projects' => esc_html__( 'Projects section page', 'pxo' ),
 		'contact' => esc_html__( 'Contact section page', 'pxo' ),
 	);
-
 	foreach ($sections as $key => $section) {
-
 		$wp_customize->add_setting( 'pxo_' . $key . '_section_page', array(
-			'default'           => '',
-			'sanitize_callback' => 'absint'
+			'default'           => ''
 		) );
 
 		$wp_customize->add_control( 'pxo_' . $key . '_section_page', array(
@@ -43,7 +103,6 @@ function pxo_customize_register( \WP_Customize_Manager $wp_customize ) {
 			'section'  => 'pxo_page_sections',
 			'type'     => 'dropdown-pages'
 		) );
-
 	}
 
 	if ( isset( $wp_customize->selective_refresh ) ) {
@@ -56,7 +115,6 @@ function pxo_customize_register( \WP_Customize_Manager $wp_customize ) {
 			'render_callback' => 'pxo_customize_partial_blogdescription',
 		) );
 	}
-
 }
 add_action( 'customize_register', 'pxo_customize_register' );
 
