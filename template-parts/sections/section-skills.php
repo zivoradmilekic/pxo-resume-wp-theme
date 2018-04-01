@@ -1,6 +1,6 @@
 <section id="<?php the_slug(); ?>" label="<?php the_title(); ?>" class="section-skills bg-primary full-height text-light fill-light">
 	<div class="container full-height">
-		<div class="row full-height align-items-center py-5">
+		<div class="row full-height align-items-center py-6">
 			<div class="col-12">
 				<?php pxo_post_thumbnail(); ?>
 

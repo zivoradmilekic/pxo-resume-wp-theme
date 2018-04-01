@@ -1,8 +1,23 @@
+// stylelint-disable
+$spacer: 1rem !default;
+$spacers: () !default;
+$spacers: map-merge((
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 4.5),
+  7: ($spacer * 6),
+  8: ($spacer * 7.5)
+), $spacers);
+
 @import "~bootstrap/scss/bootstrap";
 @import "./fill-emphasis";
 
-// Contextual colors
 
+// Contextual colors
 .fill-white { fill: #fff !important; }
 
 @each $color, $value in $theme-colors {
@@ -25,6 +40,11 @@
 		max-width: 40px;
 		max-height: 40px;
 	}
+
+	@at-root .position-fixed & {
+		max-width: 40px;
+		max-height: 40px;
+	}
 }
 
 .progress {
@@ -33,6 +53,13 @@
 
 .site-header {
 	z-index: 9999;
+	transition: background-color 0.4s;
+	will-change: background-color;
+}
+
+.site-header-inner {
+	transition: background-color 0.4s;
+	will-change: background-color;
 }
 
 .post-thumbnail {
@@ -166,5 +193,21 @@ section {
 .pxo-page-content {
 	a {
 		color: inherit;
+	}
+}
+
+
+@include media-breakpoint-down(sm) {
+	.navbar-collapse {
+		margin-left: -0.50rem;
+		margin-right: -0.50rem;
+	}
+
+	.navbar-nav.nav-pills {
+		margin-bottom: 0.75rem;
+		.nav-link {
+			padding-left: 0.50rem;
+			padding-right: 0.50rem;
+		}
 	}
 }

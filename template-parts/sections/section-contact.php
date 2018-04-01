@@ -1,7 +1,7 @@
 <section id="<?php the_slug(); ?>" label="<?php the_title(); ?>" class="section-contact bg-dark">
 	<div class="container full-height">
 		<div class="row full-height align-items-center">
-			<div class="col-12 py-5">
+			<div class="col-12 py-6">
 				<div class="row align-items-top">
 					<div class="col-12 text-light">
 						<?php pxo_post_thumbnail(); ?>
