@@ -83,7 +83,7 @@ function the_hero_section_style() {
 <style>
 	@media (orientation: landscape) {
 		section.section-hero {
-			background: url(<?= $horizontal_background_image_url; ?>);
+			background-image: url(<?= $horizontal_background_image_url; ?>);
 		}
 	}
 </style>
@@ -95,7 +95,7 @@ function the_hero_section_style() {
 <style>
 	@media (orientation: portrait) {
 		section.section-hero {
-			background: url(<?= $vertical_background_image_url; ?>);
+			background-image: url(<?= $vertical_background_image_url; ?>);
 		}
 	}
 </style>
