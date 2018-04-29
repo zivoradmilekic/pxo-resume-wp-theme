@@ -21,8 +21,8 @@ $sections = array(
 		wp_reset_postdata();
 
 		foreach ($sections as $key => $section) {
-			$asdf = 'pxo_' . $section . '_section_page';
-			$section_page_ID = get_theme_mod($asdf);
+			$section_page_slug = 'pxo_' . $section . '_section_page';
+			$section_page_ID = get_theme_mod($section_page_slug);
 
 			if ($section_page_ID != 0) {
 				global $wp_query;

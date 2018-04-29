@@ -18,5 +18,16 @@
 			</div>
 		</div>
 	</div>
+	<?php if (has_custom_logo()) : ?>
+	<div class="pxo-print-logo-wrap d-none d-print-block position-absolute w-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 py-6 text-right">
+					<?php the_custom_logo(); ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php endif; ?>
 </section>
 

@@ -144,7 +144,14 @@ section {
 		position: absolute;
 		width: 100%;
 		bottom: 0;
-		background: transparent !important;
+	}
+
+	.site-info {
+		font-weight: 100;
+
+		.author-logo {
+			margin: -5px auto;
+		}
 	}
 }
 
@@ -194,6 +201,11 @@ section {
 	a {
 		color: inherit;
 	}
+}
+
+.pxo-print-logo-wrap {
+	top: 0;
+	z-index: 3;
 }
 
 

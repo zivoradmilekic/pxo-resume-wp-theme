@@ -187,4 +187,10 @@ function the_hero_graphic_image() {
 	}
 }
 
+function the_author_logo() {
+?>
+<a class="text-light" href="http://pixoff.co" target="_blank"><img src="<?= get_template_directory_uri(); ?>/images/pxo-logo.svg" class="author-logo"></a>
+<?php
+}
+
 ?>

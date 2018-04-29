@@ -35,6 +35,24 @@
 					'author' => __('Author')
 				)
 			),
+			'award' => array(
+				'labels' => piklist('post_type_labels', 'Award'),
+				'menu_icon' => 'dashicons-awards',
+				'page_icon' => 'dashicons-awards',
+				'supports' => array(
+					'title',
+					'editor',
+					'revisions'
+				),
+				'public' => true,
+				'rewrite' => array(
+					'slug' => 'awards'
+				),
+				'capability_type' => 'post',
+				'edit_columns' => array(
+					'author' => __('Author')
+				)
+			),
 			'skill' => array(
 				'labels' => piklist('post_type_labels', 'Skill'),
 				'menu_icon' => 'dashicons-hammer',
