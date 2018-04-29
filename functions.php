@@ -118,7 +118,7 @@ function pxo_scripts() {
 
 	wp_enqueue_style( 'pxo-app-style', get_template_directory_uri() . '/dist' . $files['/app.css'] );
 
-	wp_enqueue_script( 'pxo-app-script', get_template_directory_uri() . '/dist' . $files['/app.js'] );
+	wp_enqueue_script( 'pxo-app-script', get_template_directory_uri() . '/dist' . $files['/app.js'], array(), '20151215', true );
 
 	wp_enqueue_script( 'pxo-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
