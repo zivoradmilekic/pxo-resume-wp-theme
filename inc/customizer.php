@@ -95,6 +95,23 @@ function pxo_customize_register( WP_Customize_Manager $wp_customize ) {
 		) );
 	}
 
+	$wpforms_list = array('' => '— Select —');
+	$wpforms = get_posts( array('post_type' => 'wpforms'));
+
+	foreach($wpforms as $wpform) {
+		$wpforms_list[$wpform->ID] = $wpform->post_title;
+	}
+
+	$wp_customize->add_setting( 'pxo_contact_form', array(
+		'transport' => 'postMessage'
+	));
+	$wp_customize->add_control( 'pxo_contact_form', array(
+		'label'    => esc_html__( 'Contact form', 'pxo' ),
+		'type'     => 'select',
+		'section'  => 'pxo_page_sections',
+		'choices'  => $wpforms_list
+	));
+
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial( 'blogname', array(
 			'selector'        => '.site-title a',

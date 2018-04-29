@@ -21,26 +21,7 @@
 						<?php endforeach; ?>
 					</div>
 					<div class="col-12 col-lg-6 d-print-none">
-						<div class="card mt-4">
-							<div class="card-body p-lg-5">
-								<h5 class="card-title">Looking for a excellent business idea?</h5>
-								<form>
-									<div class="form-group">
-										<input type="text" class="form-control"  placeholder="Name*" required>
-									</div>
-									<div class="form-group">
-										<input type="email" class="form-control" placeholder="E-mail*" required>
-									</div>
-									<div class="form-group">
-										<input type="text" class="form-control"  placeholder="Subject" required>
-									</div>
-									<div class="form-group">
-										<textarea class="form-control" rows="3" placeholder="Your Message"></textarea>
-									</div>
-									<button type="submit" class="btn btn-primary">Send Message</button>
-								</form>
-							</div>
-						</div>
+						<?php the_contact_form(); ?>
 					</div>
 				</div>
 			</div>

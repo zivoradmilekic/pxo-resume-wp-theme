@@ -208,6 +208,38 @@ section {
 	z-index: 3;
 }
 
+.wpforms-container {
+	margin: 0 !important;
+
+	input[type=date],
+	input[type=datetime],
+	input[type=datetime-local],
+	input[type=email],
+	input[type=month],
+	input[type=number],
+	input[type=password],
+	input[type=range],
+	input[type=search],
+	input[type=tel],
+	input[type=text],
+	input[type=time],
+	input[type=url],
+	input[type=week],
+	select,
+	textarea {
+		@extend .form-control;
+	}
+}
+
+.wpforms-confirmation-container {
+	@extend .alert;
+	@extend .alert-success;
+	margin: 0 !important;
+
+	p {
+		margin: 0 !important;
+	}
+}
 
 @include media-breakpoint-down(sm) {
 	.navbar-collapse {
