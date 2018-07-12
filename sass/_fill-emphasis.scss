@@ -1,0 +1,11 @@
+// stylelint-disable declaration-no-important
+
+// Typography
+
+@mixin fill-emphasis-variant($parent, $color) {
+  #{$parent} {
+	path {
+		fill: $color !important;
+	}
+  }
+}
