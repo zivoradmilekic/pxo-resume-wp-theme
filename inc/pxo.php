@@ -24,7 +24,7 @@ function the_icon($post) {
 
 function the_thumbnail($post) {
 	if ($post->post_type == "project") {
-		$thumbnail = get_the_post_thumbnail($post->ID);
+		$thumbnail = get_the_post_thumbnail($post->ID, 'large');
 		if($thumbnail) {
 ?>
 		<div class="pxo-item-post_thumbnail my-2">
