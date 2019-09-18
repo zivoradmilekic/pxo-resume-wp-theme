@@ -136,6 +136,11 @@ add_action( 'wp_enqueue_scripts', 'pxo_scripts' );
 require get_template_directory() . '/piklist/pixoff-resume.php';
 
 /**
+ * Implement the ACF.
+ */
+require get_template_directory() . '/inc/acf.php';
+
+/**
  * Implement the Color functions.
  */
 require get_template_directory() . '/inc/color-functions.php';
