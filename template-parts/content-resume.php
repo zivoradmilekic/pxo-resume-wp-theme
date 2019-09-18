@@ -33,7 +33,8 @@ $sections = array(
 				'image' => get_sub_field('image'),
 				'title' => get_sub_field('title'),
 				'content' => get_sub_field('content'),
-				'grids' => get_sub_field('grids')
+				'grids' => get_sub_field('grids'),
+				'contact_form' => get_sub_field('contact_form')
 			);
 
 			get_template_part( 'template-parts/sections/section', $section['type'] );

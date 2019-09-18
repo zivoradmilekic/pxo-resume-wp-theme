@@ -189,15 +189,14 @@ function the_author_logo() {
 <?php
 }
 
-function the_contact_form() {
-	$contact_form_ID = get_theme_mod('pxo_contact_form');
+function the_contact_form($contact_form_ID) {
 	if ($contact_form_ID) {
 ?>
-<div class="card mt-4">
-	<div class="card-body p-lg-5">
-		<?= do_shortcode( '[wpforms id="'.$contact_form_ID.'" title="true" description="true"]' ); ?>
+	<div class="card mt-4">
+		<div class="card-body p-lg-5">
+			<?= do_shortcode( '[wpforms id="'.$contact_form_ID.'" title="true" description="true"]' ); ?>
+		</div>
 	</div>
-</div>
 <?php
 	}
 }

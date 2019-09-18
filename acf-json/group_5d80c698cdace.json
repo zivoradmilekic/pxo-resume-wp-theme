@@ -531,6 +531,36 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "key": "field_5d82773508c4e",
+                    "label": "Contact form",
+                    "name": "contact_form",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5d81f0cb55c5c",
+                                "operator": "==",
+                                "value": "contact"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "wpforms"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 1,
+                    "multiple": 0,
+                    "return_format": "id",
+                    "ui": 1
                 }
             ]
         }
@@ -554,5 +584,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1568830621
+    "modified": 1568831879
 }

@@ -18,27 +18,6 @@ function pxo_customize_register( WP_Customize_Manager $wp_customize ) {
 	$wp_customize->remove_section('colors');
 	$wp_customize->remove_section('header_image');
 
-
-	// Add customizer hero section
-	$wp_customize->add_section( 'pxo_theming_section',
-		array(
-			'title'         => esc_html__( 'Theming', 'pxo' ),
-			'priority'      => 20
-		)
-	);
-
-	$wp_customize->add_setting( 'pxo_theming_section_primary_color', array(
-		'default'           => ''
-	) );
-	$wp_customize->add_control(new \WP_Customize_Color_Control($wp_customize, 'pxo_theming_section_primary_color', [
-		'label' => __('Primary color', 'pxo'),
-		'description' => __('This is primary color.', 'pxo'),
-		'section' => 'pxo_theming_section',
-		'settings' => 'pxo_theming_section_primary_color',
-		'transport' => 'postMessage'
-	]));
-
-
 	// Add customizer hero section
 	$wp_customize->add_section( 'pxo_hero_section',
 		array(
@@ -66,51 +45,6 @@ function pxo_customize_register( WP_Customize_Manager $wp_customize ) {
 		'settings' => 'pxo_hero_section_hero_graphic',
 		'transport' => 'postMessage'
 	]));
-
-
-	// Add customizer page section
-	$wp_customize->add_section( 'pxo_page_sections',
-		array(
-			'title'         => esc_html__( 'Page sections', 'pxo' ),
-			'priority'      => 40
-		)
-	);
-	$sections = array(
-		'about' => esc_html__( 'About section page', 'pxo' ),
-		'experiences' => esc_html__( 'Experiences section page', 'pxo' ),
-		'services' => esc_html__( 'Services section page', 'pxo' ),
-		'skills' => esc_html__( 'Skills section page', 'pxo' ),
-		'projects' => esc_html__( 'Projects section page', 'pxo' ),
-		'contact' => esc_html__( 'Contact section page', 'pxo' ),
-	);
-	foreach ($sections as $key => $section) {
-		$wp_customize->add_setting( 'pxo_' . $key . '_section_page', array(
-			'default'           => ''
-		) );
-
-		$wp_customize->add_control( 'pxo_' . $key . '_section_page', array(
-			'label'    => $section,
-			'section'  => 'pxo_page_sections',
-			'type'     => 'dropdown-pages'
-		) );
-	}
-
-	$wpforms_list = array('' => '— Select —');
-	$wpforms = get_posts( array('post_type' => 'wpforms'));
-
-	foreach($wpforms as $wpform) {
-		$wpforms_list[$wpform->ID] = $wpform->post_title;
-	}
-
-	$wp_customize->add_setting( 'pxo_contact_form', array(
-		'transport' => 'postMessage'
-	));
-	$wp_customize->add_control( 'pxo_contact_form', array(
-		'label'    => esc_html__( 'Contact form', 'pxo' ),
-		'type'     => 'select',
-		'section'  => 'pxo_page_sections',
-		'choices'  => $wpforms_list
-	));
 
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial( 'blogname', array(

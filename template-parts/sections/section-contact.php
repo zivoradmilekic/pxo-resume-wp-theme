@@ -11,7 +11,7 @@
 
 						<h3 class="display-4"><?= $section['title']; ?></h1>
 					</div>
-					<div class="col-12 col-lg-6">
+					<div class="col-12 col-lg">
 						<?php if ( $section['content'] ) : ?>
 							<hr class="hr-<?= $section['colors']['text']; ?> my-4">
 							<div class="pxo-page-content">
@@ -43,9 +43,12 @@
 							</div>
 						<?php endforeach; $grid = null; ?>
 					</div>
-					<div class="col-12 col-lg-6 d-print-none">
-						<?php the_contact_form(); ?>
-					</div>
+
+					<?php if ( $section['contact_form'] ) : ?>
+						<div class="col-12 col-lg d-print-none">
+							<?php the_contact_form($section['contact_form']); ?>
+						</div>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
