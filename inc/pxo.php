@@ -39,7 +39,7 @@ function the_progress($id) {
 	$progress = get_post_meta($id, 'progress', true);
 	if($progress) {
 ?>
-	<div class="progress my-2">
+	<div class="progress my-2" title="<?= $progress ?>%">
 		<div class="progress-bar bg-white" role="progressbar" style="width: <?= $progress ?>%" aria-valuenow="<?= $progress ?>" aria-valuemin="0" aria-valuemax="100"></div>
 	</div>
 <?php

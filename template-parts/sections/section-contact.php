@@ -1,3 +1,10 @@
+<pre>
+<?php
+	global $section;
+
+	var_dump($section);
+?>
+</pre>
 <section id="<?php the_slug(); ?>" label="<?php the_title(); ?>" class="section-contact bg-dark">
 	<div class="container full-height">
 		<div class="row full-height align-items-center">
