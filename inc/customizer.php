@@ -18,34 +18,6 @@ function pxo_customize_register( WP_Customize_Manager $wp_customize ) {
 	$wp_customize->remove_section('colors');
 	$wp_customize->remove_section('header_image');
 
-	// Add customizer hero section
-	$wp_customize->add_section( 'pxo_hero_section',
-		array(
-			'title'         => esc_html__( 'Hero section', 'pxo' ),
-			'priority'      => 30
-		)
-	);
-
-	$wp_customize->add_setting( 'pxo_hero_section_hero_background_image', array(
-		'default'           => ''
-	) );
-	$wp_customize->add_control(new \WP_Customize_Image_Control($wp_customize, 'pxo_hero_section_hero_background_image', [
-		'label' => __('Hero background image', 'pxo'),
-		'section' => 'pxo_hero_section',
-		'settings' => 'pxo_hero_section_hero_background_image',
-		'transport' => 'postMessage'
-	]));
-
-	$wp_customize->add_setting( 'pxo_hero_section_hero_graphic', array(
-		'default'           => ''
-	) );
-	$wp_customize->add_control(new \WP_Customize_Image_Control($wp_customize, 'pxo_hero_section_hero_graphic', [
-		'label' => __('Hero graphic', 'pxo'),
-		'section' => 'pxo_hero_section',
-		'settings' => 'pxo_hero_section_hero_graphic',
-		'transport' => 'postMessage'
-	]));
-
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial( 'blogname', array(
 			'selector'        => '.site-title a',

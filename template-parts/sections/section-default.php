@@ -1,6 +1,5 @@
 <?php
 	global $section;
-
 ?>
 <section id="<?= sanitize_title($section['title']); ?>" label="<?= $section['title']; ?>" class="section-default full-height bg-<?= $section['colors']['background']; ?> text-<?= $section['colors']['text']; ?> fill-<?= $section['colors']['icons']; ?>">
 	<div class="container full-height">

@@ -51,7 +51,15 @@
                     "type": "group",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5d81f0cb55c5c",
+                                "operator": "!=",
+                                "value": "hero"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -170,6 +178,38 @@
                     "mime_types": ""
                 },
                 {
+                    "key": "field_5d8283829351f",
+                    "label": "Hero Graphic Image",
+                    "name": "hero_graphic_image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5d81f0cb55c5c",
+                                "operator": "==",
+                                "value": "hero"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
                     "key": "field_5d80c75fed877",
                     "label": "Title",
                     "name": "title",
@@ -195,7 +235,15 @@
                     "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5d81f0cb55c5c",
+                                "operator": "!=",
+                                "value": "hero"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -584,5 +632,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1568831879
+    "modified": 1568835590
 }

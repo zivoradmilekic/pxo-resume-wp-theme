@@ -131,11 +131,6 @@ function pxo_scripts() {
 add_action( 'wp_enqueue_scripts', 'pxo_scripts' );
 
 /**
- * Implement the Piklist - Pixoff Resume.
- */
-require get_template_directory() . '/piklist/pixoff-resume.php';
-
-/**
  * Implement the ACF.
  */
 require get_template_directory() . '/inc/acf.php';

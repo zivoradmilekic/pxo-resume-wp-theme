@@ -10,15 +10,6 @@ function the_section_image($image) {
 	}
 }
 
-function get_custom_posts($post_type) {
-	return get_posts(
-		array(
-			'post_type' => $post_type,
-			'posts_per_page' => -1,
-		)
-	);
-}
-
 function the_icon($icon, $title) {
 	if($icon) {
 ?>
@@ -60,39 +51,10 @@ function the_date_range($from, $to) {
 	}
 }
 
-function has_the_content() {
-	global $post;
-	return $post->post_content != '';
-}
-
-function the_slug() {
-	global $post;
-	echo $post->post_name;
-};
-
-function the_hero_section_header_style() {
-	$horizontal_background_image_url = esc_url(get_theme_mod('pxo_hero_section_horizontal_background_image'));
-	if ($horizontal_background_image_url) {
-?>
-<style>
-	@media screen and (orientation: landscape) {
-		section.section-hero {
-			background-image: url(<?= $horizontal_background_image_url; ?>) !important;
-		}
+function the_hero_section_style($image) {
+	if ($image) {
+		echo 'style="background-image: url(' . $image['url'] . ');"';
 	}
-</style>
-<?php
-	}
-
-}
-
-function the_hero_section_style() {
-	$hero_background_image_url = esc_url(get_theme_mod('pxo_hero_section_hero_background_image'));
-
-	if ($hero_background_image_url) {
-		echo 'style="background-image: url(' . $hero_background_image_url . ');"';
-	}
-
 }
 
 function the_primary_color_style() {
@@ -173,12 +135,10 @@ function the_primary_color_style() {
 
 }
 
-function the_hero_graphic_image() {
-	$hero_graphic_url = esc_url(get_theme_mod('pxo_hero_section_hero_graphic'));
-
-	if ($hero_graphic_url) {
+function the_hero_graphic_image($image) {
+	if ($image) {
 ?>
-<img class="hero-graphic" src="<?= $hero_graphic_url; ?>" alt="Hero graphic">
+<img class="hero-graphic" src="<?= $image; ?>" alt="Hero graphic">
 <?php
 	}
 }
