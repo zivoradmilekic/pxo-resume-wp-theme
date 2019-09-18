@@ -1,5 +1,15 @@
 <?php
 
+function the_section_image($image) {
+	if($image) {
+?>
+	<div class="post-thumbnail">
+		<img src="<?= $image['sizes']['medium'] ?>" alt="<?= $image['title'] ?>">
+	</div>
+<?php
+	}
+}
+
 function get_custom_posts($post_type) {
 	return get_posts(
 		array(
@@ -9,51 +19,37 @@ function get_custom_posts($post_type) {
 	);
 }
 
-function the_icon($post) {
-	if ($post->post_type != "project") {
-		$icon = get_the_post_thumbnail($post->ID);
-		if($icon) {
+function the_icon($icon, $title) {
+	if($icon) {
 ?>
-		<div class="col-auto pr-0 pxo-item-post_icon">
-			<?= $icon ?>
-		</div>
-<?php
-		}
-	}
-}
-
-function the_thumbnail($post) {
-	if ($post->post_type == "project") {
-		$thumbnail = get_the_post_thumbnail($post->ID, 'large');
-		if($thumbnail) {
-?>
-		<div class="pxo-item-post_thumbnail my-2">
-			<?= $thumbnail ?>
-		</div>
-<?php
-		}
-	}
-}
-
-function the_progress($id) {
-	$progress = get_post_meta($id, 'progress', true);
-	if($progress) {
-?>
-	<div class="progress my-2" title="<?= $progress ?>%">
-		<div class="progress-bar bg-white" role="progressbar" style="width: <?= $progress ?>%" aria-valuenow="<?= $progress ?>" aria-valuemin="0" aria-valuemax="100"></div>
+	<div class="col-auto pr-0 pxo-item-post_icon">
+		<img src="<?= $icon; ?>" alt="<?= $title ?>">
 	</div>
 <?php
 	}
 }
 
-function format_date($string_date) {
-	return ($string_date == "")? null : date( 'Y-m', strtotime( $string_date ) );
-};
+function the_thumbnail($image) {
+	if ($image) {
+?>
+		<div class="pxo-item-post_thumbnail my-2">
+			<img src="<?= $image['sizes']['medium_large'] ?>" alt="<?= $image['title'] ?>">
+		</div>
+<?php
+	}
+}
 
-function the_date_range($id) {
-	$from = format_date(get_post_meta($id, 'from', true));
-	$to = format_date(get_post_meta($id, 'to', true));
+function the_progress($progress, $color) {
+	if($progress > 0) {
+?>
+	<div class="progress bg-<?= $color ?>-alpha my-2" title="<?= $progress ?>%">
+		<div class="progress-bar bg-<?= $color ?>" role="progressbar" style="width: <?= $progress ?>%" aria-valuenow="<?= $progress ?>" aria-valuemin="0" aria-valuemax="100"></div>
+	</div>
+<?php
+	}
+}
 
+function the_date_range($from, $to) {
 	if ($from || $to) {
 		$from = ($from) ? $from : esc_html__('Past', 'pxo');
 		$to = ($to) ? $to : esc_html__('Present', 'pxo');

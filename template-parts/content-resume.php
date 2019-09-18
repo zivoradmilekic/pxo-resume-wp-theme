@@ -29,6 +29,7 @@ $sections = array(
 			global $section;
 			$section = array(
 				'type' => get_sub_field('type'),
+				'colors' => get_sub_field('colors'),
 				'image' => get_sub_field('image'),
 				'title' => get_sub_field('title'),
 				'content' => get_sub_field('content'),

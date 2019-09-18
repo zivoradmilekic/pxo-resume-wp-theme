@@ -3,9 +3,9 @@
 // Typography
 
 @mixin fill-emphasis-variant($parent, $color) {
-  #{$parent} {
-	path {
-		fill: $color !important;
+	#{$parent} {
+		path {
+			fill: $color !important;
+		}
 	}
-  }
 }

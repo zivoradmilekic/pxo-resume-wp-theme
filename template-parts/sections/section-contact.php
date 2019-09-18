@@ -1,31 +1,47 @@
-<pre>
 <?php
 	global $section;
-
-	var_dump($section);
 ?>
-</pre>
-<section id="<?php the_slug(); ?>" label="<?php the_title(); ?>" class="section-contact bg-dark">
+<section id="<?= sanitize_title($section['title']); ?>" label="<?= $section['title']; ?>" class="section-contact full-height bg-<?= $section['colors']['background']; ?> text-<?= $section['colors']['text']; ?> fill-<?= $section['colors']['icons']; ?>">
 	<div class="container full-height">
 		<div class="row full-height align-items-center">
 			<div class="col-12 py-6">
 				<div class="row align-items-top">
-					<div class="col-12 text-light">
-						<?php pxo_post_thumbnail(); ?>
+					<div class="col-12">
+						<?php the_section_image($section['image']); ?>
 
-						<h3 class="display-4"><?php the_title(); ?></h1>
+						<h3 class="display-4"><?= $section['title']; ?></h1>
 					</div>
-					<div class="col-12 col-lg-6 text-light fill-primary">
-						<?php if ( has_the_content() ) : ?>
-						<hr class="hr-light my-4">
-						<div class="pxo-page-content">
-							<?php the_content(); ?>
-						</div><!-- .pxo-page-content -->
+					<div class="col-12 col-lg-6">
+						<?php if ( $section['content'] ) : ?>
+							<hr class="hr-<?= $section['colors']['text']; ?> my-4">
+							<div class="pxo-page-content">
+								<?= $section['content']; ?>
+							</div><!-- .pxo-page-content -->
 						<?php endif; ?>
 
-						<?php foreach(get_custom_posts('contact') as $index=>$post) : ?>
-							<?php get_template_part( 'template-parts/items/item', 'post' ); ?>
-						<?php endforeach; ?>
+						<?php foreach($section['grids'] as $index=>$grid) : ?>
+							<?php if ( isset($grid['title']) && $grid['title'] != '' ) : ?>
+								<h4 class="display-5 mt-4"><?= $grid['title']; ?></h1>
+							<?php endif; ?>
+
+							<div class="row">
+								<?php
+									$cols = array(
+										'third' => 'col-12 col-md-6 col-lg-4',
+										'half' => 'col-12 col-md-6',
+										'full' => 'col-12'
+									);
+
+									foreach($grid['items'] as $index=>$local_item) :
+									global $item;
+									$item = $local_item;
+								?>
+									<div class="<?= $cols[$grid['layout']] ?>">
+										<?php get_template_part( 'template-parts/items/item', 'post' ); ?>
+									</div>
+								<?php endforeach; $local_item = null; ?>
+							</div>
+						<?php endforeach; $grid = null; ?>
 					</div>
 					<div class="col-12 col-lg-6 d-print-none">
 						<?php the_contact_form(); ?>
