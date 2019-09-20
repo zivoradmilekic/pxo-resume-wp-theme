@@ -22,7 +22,7 @@ $spacers: map-merge((
 .fill-white { fill: #fff !important; }
 
 @each $color, $value in $theme-colors {
-  @include fill-emphasis-variant(".fill-#{$color}", $value);
+	@include fill-emphasis-variant(".fill-#{$color}", $value);
 }
 
 .fill-muted { fill: $text-muted !important; }
@@ -31,11 +31,15 @@ $spacers: map-merge((
 .bg-white-alpha { background-color: #ffffff80 !important; }
 
 @each $color, $value in $theme-colors {
-  @include bg-alpha-emphasis-variant(".bg-#{$color}-alpha", $value);
+	@include bg-alpha-emphasis-variant(".bg-#{$color}-alpha", $value);
 }
 
 .o-5 {
 	opacity: 0.5;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+	color: #ffffff;
 }
 
 .custom-logo {
