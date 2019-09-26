@@ -1,6 +1,9 @@
-<section id="404" class="section-404 text-light full-height" <?php the_hero_section_style(); ?>>
+<?php
+$settings = get_field('404_settings', 'option');
+?>
+<section id="404" class="section-404 text-light full-height" <?php the_hero_section_style($settings['image']); ?>>
 	<div class="backdrop"></div>
-	<?php the_hero_graphic_image(); ?>
+	<?php the_hero_graphic_image($settings['hero_graphic_image']); ?>
 	<div class="container full-height">
 		<div class="row full-height align-items-center">
 			<div class="col-12 py-6">
