@@ -1,59 +1,46 @@
 <?php
 
-function get_custom_posts($post_type) {
-	return get_posts(
-		array(
-			'post_type' => $post_type,
-			'posts_per_page' => -1,
-		)
-	);
-}
-
-function the_icon($post) {
-	if ($post->post_type != "project") {
-		$icon = get_the_post_thumbnail($post->ID);
-		if($icon) {
+function the_section_image($image) {
+	if($image) {
 ?>
-		<div class="col-auto pr-0 pxo-item-post_icon">
-			<?= $icon ?>
-		</div>
-<?php
-		}
-	}
-}
-
-function the_thumbnail($post) {
-	if ($post->post_type == "project") {
-		$thumbnail = get_the_post_thumbnail($post->ID, 'large');
-		if($thumbnail) {
-?>
-		<div class="pxo-item-post_thumbnail my-2">
-			<?= $thumbnail ?>
-		</div>
-<?php
-		}
-	}
-}
-
-function the_progress($id) {
-	$progress = get_post_meta($id, 'progress', true);
-	if($progress) {
-?>
-	<div class="progress my-2">
-		<div class="progress-bar bg-white" role="progressbar" style="width: <?= $progress ?>%" aria-valuenow="<?= $progress ?>" aria-valuemin="0" aria-valuemax="100"></div>
+	<div class="post-thumbnail">
+		<img src="<?= $image['sizes']['medium'] ?>" alt="<?= $image['title'] ?>">
 	</div>
 <?php
 	}
 }
 
-function format_date($string_date) {
-	return ($string_date == "")? null : date( 'Y-m', strtotime( $string_date ) );
-};
+function the_icon($icon, $title) {
+	if($icon) {
+?>
+	<div class="col-auto pr-0 pxo-item-post_icon">
+		<img src="<?= $icon; ?>" alt="<?= $title ?>">
+	</div>
+<?php
+	}
+}
 
-function the_date_range($id) {
-	$from = format_date(get_post_meta($id, 'from', true));
-	$to = format_date(get_post_meta($id, 'to', true));
+function the_thumbnail($image) {
+	if ($image) {
+?>
+		<div class="pxo-item-post_thumbnail my-2">
+			<img src="<?= $image['sizes']['medium_large'] ?>" alt="<?= $image['title'] ?>">
+		</div>
+<?php
+	}
+}
 
+function the_progress($progress, $color) {
+	if($progress > 0) {
+?>
+	<div class="progress bg-<?= $color ?>-alpha my-2" title="<?= $progress ?>%">
+		<div class="progress-bar bg-<?= $color ?>" role="progressbar" style="width: <?= $progress ?>%" aria-valuenow="<?= $progress ?>" aria-valuemin="0" aria-valuemax="100"></div>
+	</div>
+<?php
+	}
+}
+
+function the_date_range($from, $to) {
 	if ($from || $to) {
 		$from = ($from) ? $from : esc_html__('Past', 'pxo');
 		$to = ($to) ? $to : esc_html__('Present', 'pxo');
@@ -64,39 +51,10 @@ function the_date_range($id) {
 	}
 }
 
-function has_the_content() {
-	global $post;
-	return $post->post_content != '';
-}
-
-function the_slug() {
-	global $post;
-	echo $post->post_name;
-};
-
-function the_hero_section_header_style() {
-	$horizontal_background_image_url = esc_url(get_theme_mod('pxo_hero_section_horizontal_background_image'));
-	if ($horizontal_background_image_url) {
-?>
-<style>
-	@media screen and (orientation: landscape) {
-		section.section-hero {
-			background-image: url(<?= $horizontal_background_image_url; ?>) !important;
-		}
+function the_hero_section_style($image) {
+	if ($image) {
+		echo 'style="background-image: url(' . $image['url'] . ');"';
 	}
-</style>
-<?php
-	}
-
-}
-
-function the_hero_section_style() {
-	$hero_background_image_url = esc_url(get_theme_mod('pxo_hero_section_hero_background_image'));
-
-	if ($hero_background_image_url) {
-		echo 'style="background-image: url(' . $hero_background_image_url . ');"';
-	}
-
 }
 
 function the_primary_color_style() {
@@ -177,12 +135,10 @@ function the_primary_color_style() {
 
 }
 
-function the_hero_graphic_image() {
-	$hero_graphic_url = esc_url(get_theme_mod('pxo_hero_section_hero_graphic'));
-
-	if ($hero_graphic_url) {
+function the_hero_graphic_image($image) {
+	if ($image) {
 ?>
-<img class="hero-graphic" src="<?= $hero_graphic_url; ?>" alt="Hero graphic">
+<img class="hero-graphic" src="<?= $image; ?>" alt="Hero graphic">
 <?php
 	}
 }
@@ -193,15 +149,14 @@ function the_author_logo() {
 <?php
 }
 
-function the_contact_form() {
-	$contact_form_ID = get_theme_mod('pxo_contact_form');
+function the_contact_form($contact_form_ID) {
 	if ($contact_form_ID) {
 ?>
-<div class="card mt-4">
-	<div class="card-body p-lg-5">
-		<?= do_shortcode( '[wpforms id="'.$contact_form_ID.'" title="true" description="true"]' ); ?>
+	<div class="card mt-4">
+		<div class="card-body p-lg-5">
+			<?= do_shortcode( '[wpforms id="'.$contact_form_ID.'" title="true" description="true"]' ); ?>
+		</div>
 	</div>
-</div>
 <?php
 	}
 }

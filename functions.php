@@ -131,9 +131,9 @@ function pxo_scripts() {
 add_action( 'wp_enqueue_scripts', 'pxo_scripts' );
 
 /**
- * Implement the Piklist - Pixoff Resume.
+ * Implement the ACF.
  */
-require get_template_directory() . '/piklist/pixoff-resume.php';
+require get_template_directory() . '/inc/acf.php';
 
 /**
  * Implement the Color functions.

@@ -1,0 +1,9 @@
+// stylelint-disable declaration-no-important
+
+// Typography
+
+@mixin bg-alpha-emphasis-variant($selector, $color) {
+	#{$selector} {
+		background-color: #{$color}80 !important;
+	}
+}

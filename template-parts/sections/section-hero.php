@@ -1,6 +1,9 @@
-<section id="<?php the_slug(); ?>" label="<?php the_title(); ?>" class="section-hero text-light full-height" <?php the_hero_section_style(); ?>>
+<?php
+	global $section;
+?>
+<section id="<?= sanitize_title($section['title']); ?>" label="<?= $section['title']; ?>" class="section-hero text-light full-height" <?php the_hero_section_style($section['image']); ?>>
 	<div class="backdrop"></div>
-	<?php the_hero_graphic_image(); ?>
+	<?php the_hero_graphic_image($section['hero_graphic_image']); ?>
 	<div class="container full-height">
 		<div class="row full-height align-items-center">
 			<div class="col-12 py-6">
