@@ -184,3 +184,11 @@ add_action('get_header', 'remove_admin_login_header');
 function remove_admin_login_header() {
 	remove_action('wp_head', '_admin_bar_bump_cb');
 }
+
+add_filter( 'allowed_http_origins', 'add_allowed_origins' );
+
+function add_allowed_origins( $origins ) {
+    $origins[] = 'https://zivorad.pxo.rs';
+    $origins[] = 'https://xn--m-soa.rs';
+    return $origins;
+}
